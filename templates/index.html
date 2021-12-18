@@ -1,0 +1,42 @@
+<!-- Path: templates\index.html -->
+{% extends "base.html" %}
+
+{% block head %}
+<title>WEB AGENDA EM FLASK</title>
+<link rel="stylesheet" href="css/style.css">
+{% endblock %}
+
+{% block body %}
+<div class="tarefas">
+    <h1>Tarefas</h1>
+    <table>
+        <tr>
+            <th>Tarefa</th>
+            <th>Descrição</th>
+            <th>Prazo</th>
+            <th>Prioridade</th>
+            <th>Concluída</th>
+        </tr>
+        {% for tarefa in tarefas %}
+        <tr>
+            <td>{{ tarefa.nome }}</td>
+            <td>{{ tarefa.descricao }}</td>
+            <td>{{ tarefa.data }}</td>
+            <td>{{ tarefa.prioridade }}</td>
+            <td>{{ tarefa.status }}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td>
+            </td>
+        </tr>
+    </table>
+    <form action="/" method="POST">
+        <input type="text" name="nome" placeholder="Nome">
+        <input type="text" name="descricao" placeholder="Descrição">
+        <input type="text" name="data" placeholder="Data">
+        <input type="text" name="prioridade" placeholder="Prioridade">
+        <input type="submit" value="Cadastrar">
+    </form>
+</div>
+{% endblock %}
