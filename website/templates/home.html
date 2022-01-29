@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title%} Home {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Notes</h1>
+        </div>
+        <form class="form-horizontal" method="POST">
+            <div class="form-group">
+                <input type="text" class="form-control" id="title" name="title" placeholder="Title">
+            </div>
+            <textarea name="notes" id="notes" class="form-control" rows="10" cols="80"></textarea>
+            <br />
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary" id="save">Save</button>
+            </div>
+        </form>
+        <ul class="list-group list-group-flush" id="notes">
+            {% for note in user.notes %}
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-md-10">
+                        <h3>{{ note.title }}</h3>
+                        <p>{{ note.content }}</p>
+                        <button type="button" class="close" onClick="deleteNote({{ note.id }})">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

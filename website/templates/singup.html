@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title%} Home {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Sing Up</h1>
+        </div>
+        <form class="form-horizontal" role="form" method="POST">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your best Email">
+            </div>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your username">
+            </div>
+            <div class="form-group">
+                <label for="password1">Password</label>
+                <input type="password" class="form-control" id="password1" name="password1"
+                    placeholder="Enter your password">
+            </div>
+            <div class="form-group">
+                <label for="password2">Confirm</label>
+                <input type="password" class="form-control" id="password2" name="password2"
+                    placeholder="Confirm your password">
+            </div>
+            <br />
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Register</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

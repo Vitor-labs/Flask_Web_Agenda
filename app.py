@@ -1,24 +1,11 @@
 from os import stat
-from flask import Flask, render_template, url_for, request, redirect
-from flask_sqlalchemy import SQLAlchemy
+from website.models import Task, User
+from website import create_app
 from datetime import datetime
+from flask_sqlalchemy import SQLAlchemy
+from flask import Flask, render_template, url_for, request, redirect
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///tasks.db'
-db = SQLAlchemy(app)
-
-
-class Task(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(20), nullable=False)
-    content = db.Column(db.String(80))
-    status = db.Column(db.Integer, default=0)
-    prioridade = db.Column(db.Integer, default=0)
-    date_created = db.Column(db.DateTime, default=datetime.utcnow)
-
-    def __repr__(self):
-        return '<Task %r>' % self.id
-
+db, app = create_app("tasks")
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
